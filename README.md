@@ -1,16 +1,73 @@
-# React + Vite
+# Hacker News Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/corianderstudios/hacker-news-client/tree/main)
 
-Currently, two official plugins are available:
+A simple and modern web client for browsing Hacker News. This application allows users to view the latest stories, questions, jobs, and HN presentations posts in a clean, user-friendly interface. It features a load more button for more ruser control.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Built with React, Vite, TanStack Query, and styled with Tailwind CSS.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Browse Categories**: Easily navigate between different Hacker News sections:
+  - New Stories
+  - Ask HN
+  - Show HN
+  - Jobs
+- **Infinite Scrolling**: A "Load More" button fetches and displays more posts as you scroll, providing a smooth browsing experience.
+- **Efficient Data Fetching**: Utilizes TanStack Query (React Query) for robust data fetching, caching, and state management.
+- **Clean UI**: A minimalist design built with Tailwind CSS for a responsive and readable layout.
+- **Modern Tech Stack**: Developed using the latest versions of React, Vite, and React Router for optimal performance.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Framework**: [React](https://react.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Routing**: [React Router](https://reactrouter.com/)
+- **Data Fetching**: [TanStack Query](https://tanstack.com/query/latest)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+
+## Getting Started
+
+Follow these instructions to get a local copy of the project up and running.
+
+### Prerequisites
+
+- Node.js (v18 or later)
+- npm or yarn
+
+### Installation
+
+1.  **Clone the repository:**
+
+    ```sh
+    git clone https://github.com/corianderstudios/hacker-news-client.git
+    ```
+
+2.  **Navigate to the project directory:**
+
+    ```sh
+    cd hacker-news-client
+    ```
+
+3.  **Install dependencies:**
+    ```sh
+    yarn add
+    ```
+
+### Running the Application
+
+To start the development server, run the following command. The application will be available at `http://localhost:5173`.
+
+```sh
+yarn run dev
+```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+- `yarn run dev`: Runs the app in development mode with hot-reloading.
+- `yarn run build`: Builds the app for production to the `dist` folder.
+- `yarn run lint`: Lints the project files using ESLint.
+- `yarn run preview`: Serves the production build locally to preview it.
