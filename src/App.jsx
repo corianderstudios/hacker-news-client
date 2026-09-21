@@ -1,36 +1,66 @@
-import React from "react";
-import { NavLink, Outlet } from "react-router";
+import React, { useEffect, useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router";
 
 import { GoHome } from "react-icons/go";
 import { CiCircleQuestion } from "react-icons/ci";
 import { BiShow } from "react-icons/bi";
 import { BsSuitcaseLg } from "react-icons/bs";
+import { IoMdMenu } from "react-icons/io";
+
+const links = [
+  { to: "/", label: "New", icon: GoHome },
+  { to: "/ask", label: "Ask", icon: CiCircleQuestion },
+  { to: "/show", label: "Show", icon: BiShow },
+  { to: "/jobs", label: "Jobs", icon: BsSuitcaseLg },
+];
 
 export function Layout() {
+  const [isOpen, setIsOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen]);
+
   return (
     <div className="layout">
-      <nav className="sidebar">
-        <NavLink to="/" end>
-          <GoHome />
-          <span className="ml-1">New</span>
-        </NavLink>
-        <NavLink to="/ask">
-          <CiCircleQuestion />
-          <span className="ml-1">Ask</span>
-        </NavLink>
-        <NavLink to="/show">
-          <BiShow />
-          <span className="ml-1">Show</span>
-        </NavLink>
-        <NavLink to="/job">
-          <BsSuitcaseLg />
-          <span className="ml-1">Jobs</span>
-        </NavLink>
+      <nav id="sidebar" className={`sidebar ${isOpen ? "open" : ""}`}>
+        {links.map(({ to, label, icon: Icon }) => (
+          <NavLink key={to} to={to}>
+            <Icon size={18} />
+            <span>{label}</span>
+          </NavLink>
+        ))}
       </nav>
 
-      <main className="content">
-        <Outlet />
-      </main>
+      {isOpen && <div className="backdrop" onClick={() => setIsOpen(false)} />}
+
+      <div className="main-wrapper">
+        <header className="topbar">
+          <button
+            className="menu-button"
+            onClick={() => setIsOpen((open) => !open)}
+            aria-label="Toggle navigation"
+            aria-expanded={isOpen}
+            aria-controls="sidebar"
+          >
+            <IoMdMenu size={22} />
+          </button>
+        </header>
+
+        <main className="content">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 }
