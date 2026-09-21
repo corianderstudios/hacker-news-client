@@ -59,3 +59,60 @@ body {
   padding: 1rem;
   overflow-y: auto;
 }
+
+.main-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.topbar,
+.menu-button,
+.backdrop {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .topbar {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .menu-button {
+    display: inline-flex;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    background: #fff;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition:
+      transform 0.25s ease,
+      visibility 0.25s;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+  }
+}

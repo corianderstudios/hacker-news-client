@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="/" element={<NewStories />} />
             <Route path="ask" element={<Questions />} />
             <Route path="show" element={<Presentations />} />
-            <Route path="job" element={<Jobs />} />
+            <Route path="jobs" element={<Jobs />} />
           </Route>
         </Routes>
       </BrowserRouter>
