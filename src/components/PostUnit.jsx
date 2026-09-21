@@ -9,7 +9,7 @@ import { BsSuitcaseLg } from "react-icons/bs";
 import { CiCircleQuestion } from "react-icons/ci";
 import { BiShow } from "react-icons/bi";
 
-const creditBarClass = "flex items-center text-sm";
+const creditBarClass = "items-center text-sm hidden md:flex";
 
 export default function PostUnit({
   author,
@@ -22,13 +22,13 @@ export default function PostUnit({
   type,
 }) {
   return (
-    <li key={id} className="p-4 flex items-center">
+    <li key={id} className="p-4 flex items-center w-full">
       <div className="text-md mr-4">{linkTypeIcon(url, type)}</div>
-      <div>
-        <a href={url} className="font-medium">
+      <div className="min-w-0 flex-1">
+        <a href={url} className="min-w-0 font-medium">
           {title}
         </a>
-        <div className="flex flex-row justify-items-start justify-between w-md">
+        <div className="flex w-fit flex-row items-center gap-4">
           <div className={creditBarClass}>
             <MdKeyboardDoubleArrowUp />
             <span>{score} points</span>
@@ -39,7 +39,7 @@ export default function PostUnit({
               by <span className="text-amber-500">{author}</span>
             </span>
           </div>
-          <div className={creditBarClass}>
+          <div className="flex items-center text-sm">
             <CiClock2 />
             <span className="ml-1">{convertTime(new Date(createdAt))}</span>
           </div>
@@ -55,18 +55,18 @@ export default function PostUnit({
 function linkTypeIcon(url, type) {
   switch (type) {
     case "job":
-      return <BsSuitcaseLg />;
+      return <BsSuitcaseLg size={22} />;
       break;
     case "show":
-      return <BiShow />;
+      return <BiShow size={22} />;
       break;
     case "question":
-      return <CiCircleQuestion />;
+      return <CiCircleQuestion size={22} />;
       break;
     default:
-      if (!url || !type) return <MdOutlineArticle />;
+      if (!url || !type) return <MdOutlineArticle size={22} />;
       if (!url.includes("news.ycombinator")) {
-        return <FiExternalLink />;
+        return <FiExternalLink size={22} />;
       }
       break;
   }
