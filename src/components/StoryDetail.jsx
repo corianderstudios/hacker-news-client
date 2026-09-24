@@ -3,16 +3,11 @@ import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 
-import { HN_API } from "../utils/utils";
+import { HN_API, fetchJson, fetchComment } from "../utils/utils";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import Loading from "./Loading";
 import CreditBar from "./CreditBar";
-
-async function fetchJson(url, signal) {
-  const res = await fetch(url, { signal });
-  if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-  return res.json();
-}
+import { StoryComments } from "./Comments";
 
 export default function StoryDetail() {
   const { type, storyId } = useParams();
@@ -28,7 +23,6 @@ export default function StoryDetail() {
       fetchJson(`${HN_API}/item/${storyId}.json`, signal),
   });
 
-  console.log(story);
   return (
     <>
       {isLoading ? (
@@ -36,32 +30,39 @@ export default function StoryDetail() {
       ) : (
         <>
           <Link
-            to={`/${type}/${storyId}`}
+            to={`/${type}`}
             className="inline-flex items-center gap-1 text-orange-500 text-sm mb-8"
           >
             <IoIosArrowRoundBack size={20} /> <span>Back</span>
           </Link>
-          <div class="max-w-3xl mx-auto px-6 py-8">
+          <div className="max-w-3xl mx-auto px-6 py-8">
             <article>
-              <h1 class="text-3xl font-bold mb-4">{story.title}</h1>
+              <h1 className="text-3xl font-bold mb-4">{story.title}</h1>
 
-              <div class="flex items-center gap-4 text-sm text-gray-600 mb-8">
+              <div className="flex items-center gap-4 text-sm text-gray-600 mb-8">
                 <CreditBar
                   score={story.score}
                   author={story.by}
                   createdAt={story.time}
-                  comments={story.kids.length}
+                  comments={story.descendants}
                 />
               </div>
 
-              <div class="space-y-4 text-gray-700 leading-relaxed mb-10">
+              <div className="space-y-4 text-gray-700 leading-relaxed mb-10">
                 {story.text && (
                   <div dangerouslySetInnerHTML={{ __html: story.text }} />
                 )}
               </div>
             </article>
 
-            <hr class="border-gray-200 mb-6" />
+            <hr className="border-gray-200 mb-6" />
+            <h2 className="text-lg font-semibold mb-6">
+              {story.descendants} comments
+            </h2>
+
+            <div className="space-y-6">
+              {story.kids && <StoryComments commentIds={story.kids} />}
+            </div>
           </div>
         </>
       )}
