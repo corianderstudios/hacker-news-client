@@ -8,10 +8,10 @@ import { BsSuitcaseLg } from "react-icons/bs";
 import { IoMdMenu } from "react-icons/io";
 
 const links = [
-  { to: "/", label: "New", icon: GoHome },
+  { to: "/new", label: "New", icon: GoHome },
   { to: "/ask", label: "Ask", icon: CiCircleQuestion },
   { to: "/show", label: "Show", icon: BiShow },
-  { to: "/jobs", label: "Jobs", icon: BsSuitcaseLg },
+  { to: "/job", label: "Jobs", icon: BsSuitcaseLg },
 ];
 
 export function Layout() {

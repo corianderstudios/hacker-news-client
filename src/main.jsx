@@ -2,12 +2,9 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 
-import NewStories from "./components/NewStories";
-import Questions from "./components/Ask";
-import Presentations from "./components/Show";
-import Jobs from "./components/Jobs";
+import Stories from "./components/Stories";
 
 import "./App.css";
 import { Layout } from "./App.jsx";
@@ -20,10 +17,8 @@ createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<NewStories />} />
-            <Route path="ask" element={<Questions />} />
-            <Route path="show" element={<Presentations />} />
-            <Route path="jobs" element={<Jobs />} />
+            <Route path=":type" element={<Stories />} />
+            <Route index element={<Navigate to="/new" replace />} />
           </Route>
         </Routes>
       </BrowserRouter>

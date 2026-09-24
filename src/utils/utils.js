@@ -1,5 +1,7 @@
-export const HN_API = "https://hacker-news.firebaseio.com/v0";
-export const PAGE_SIZE = 30;
+import { useInfiniteQuery, QueryClientProvider } from "@tanstack/react-query";
+const HN_API = "https://hacker-news.firebaseio.com/v0";
+const PAGE_SIZE = 30;
+export const VALID_TYPES = ["new", "top", "best", "ask", "show", "job"];
 
 export async function fetchJson(url, signal) {
   const res = await fetch(url, { signal });
@@ -21,4 +23,15 @@ export async function fetchPage({ pageParam, type, signal }) {
     nextOffset: pageParam + PAGE_SIZE,
     total: ids.length,
   };
+}
+
+export function queryResults(type) {
+  return useInfiniteQuery({
+    queryKey: ["hn", type],
+    queryFn: ({ pageParam, signal }) => fetchPage({ type, pageParam, signal }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) =>
+      lastPage.nextOffset < lastPage.total ? lastPage.nextOffset : undefined,
+    enabled: VALID_TYPES.includes(type),
+  });
 }
