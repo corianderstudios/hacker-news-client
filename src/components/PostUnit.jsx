@@ -6,6 +6,7 @@ import { CiCircleQuestion } from "react-icons/ci";
 import { BiShow } from "react-icons/bi";
 
 import CreditBar from "./CreditBar";
+const SIZE = 22;
 
 export default function PostUnit({
   author,
@@ -37,18 +38,18 @@ export default function PostUnit({
 function linkTypeIcon(url, type) {
   switch (type) {
     case "job":
-      return <BsSuitcaseLg size={22} />;
+      return <BsSuitcaseLg size={SIZE} />;
       break;
     case "show":
-      return <BiShow size={22} />;
+      return <BiShow size={SIZE} />;
       break;
     case "question":
-      return <CiCircleQuestion size={22} />;
+      return <CiCircleQuestion size={SIZE} />;
       break;
     default:
-      if (!url || !type) return <MdOutlineArticle size={22} />;
+      if (!url || !type) return <MdOutlineArticle size={SIZE} />;
       if (!url.includes("news.ycombinator")) {
-        return <FiExternalLink size={22} />;
+        return <FiExternalLink size={SIZE} />;
       }
       break;
   }
