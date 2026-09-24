@@ -6,6 +6,7 @@ import { CiCircleQuestion } from "react-icons/ci";
 import { BiShow } from "react-icons/bi";
 import { BsSuitcaseLg } from "react-icons/bs";
 import { IoMdMenu } from "react-icons/io";
+import Logo from "./assets/icons/Logo.jsx";
 
 const links = [
   { to: "/new", label: "New", icon: GoHome },
@@ -34,6 +35,10 @@ export function Layout() {
   return (
     <div className="layout">
       <nav id="sidebar" className={`sidebar ${isOpen ? "open" : ""}`}>
+        <div className="flex items center">
+          <Logo size={25} /> <p>Hacker News</p>
+        </div>
+
         {links.map(({ to, label, icon: Icon }) => (
           <NavLink key={to} to={to}>
             <Icon size={18} />
