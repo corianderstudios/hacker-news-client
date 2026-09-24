@@ -30,6 +30,8 @@ export default function Stories() {
 
   const articles = data?.pages.flatMap((page) => page.items) ?? [];
 
+  if (isError) return <Error message={error.message} />;
+
   return (
     <section className="flex-1">
       {isLoading ? (
@@ -49,7 +51,7 @@ export default function Stories() {
                   score={score}
                   createdAt={time}
                   comments={descendants}
-                  type="article"
+                  type={type}
                 />
               ),
             )}

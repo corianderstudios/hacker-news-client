@@ -1,5 +1,5 @@
 import { useInfiniteQuery, QueryClientProvider } from "@tanstack/react-query";
-const HN_API = "https://hacker-news.firebaseio.com/v0";
+export const HN_API = "https://hacker-news.firebaseio.com/v0";
 const PAGE_SIZE = 30;
 export const VALID_TYPES = ["new", "top", "best", "ask", "show", "job"];
 

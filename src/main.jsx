@@ -20,7 +20,7 @@ createRoot(document.getElementById("root")).render(
           <Route element={<Layout />}>
             <Route path=":type" element={<Stories />} />
             <Route index element={<Navigate to="/new" replace />} />
-            <Route path="item/:id" element={<StoryDetail />} />
+            <Route path=":type/:storyId" element={<StoryDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router";
 
 import { GoHome } from "react-icons/go";
-import { CiCircleQuestion } from "react-icons/ci";
 import { BiShow } from "react-icons/bi";
 import { BsSuitcaseLg } from "react-icons/bs";
 import { IoMdMenu } from "react-icons/io";
+import { GoQuestion } from "react-icons/go";
+
 import Logo from "./assets/icons/Logo.jsx";
 
 const links = [
   { to: "/new", label: "New", icon: GoHome },
-  { to: "/ask", label: "Ask", icon: CiCircleQuestion },
+  { to: "/ask", label: "Ask", icon: GoQuestion },
   { to: "/show", label: "Show", icon: BiShow },
   { to: "/job", label: "Jobs", icon: BsSuitcaseLg },
 ];
