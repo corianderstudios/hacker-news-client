@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, Navigate } from "react-router";
 
 import PostUnit from "./PostUnit";
 import Loading from "./Loading";
@@ -25,7 +25,7 @@ export default function Stories() {
   const { title, desc } = getPageTitle(type);
 
   if (!VALID_TYPES.includes(type)) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/new" replace />;
   }
 
   const articles = data?.pages.flatMap((page) => page.items) ?? [];
@@ -92,22 +92,21 @@ export function getPageTitle(type) {
             Please read the Show HN{" "}
             <a
               href="https://news.ycombinator.com/showhn.html"
-              className="hover:text-amber-500 cursor-pointer"
+              className="hover:text-amber-500 cursor-pointer underline"
             >
-              rules{" "}
+              rules
             </a>{" "}
-            and
+            and{" "}
             <a
               href="https://news.ycombinator.com/item?id=22336638"
-              className="hover:text-amber-500 cursor-pointer"
+              className="hover:text-amber-500 cursor-pointer underline"
             >
-              {" "}
-              tips{" "}
-            </a>
+              tips
+            </a>{" "}
             before posting. You can browse the newest Show HNs{" "}
             <a
               href="https://news.ycombinator.com/shownew"
-              className="hover:text-amber-500 cursor-pointer"
+              className="hover:text-amber-500 cursor-pointer underline"
             >
               {" "}
               here
