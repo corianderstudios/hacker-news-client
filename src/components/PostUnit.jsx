@@ -11,14 +11,13 @@ export default function PostUnit({
   author,
   url,
   title,
-  id,
   score,
   createdAt,
   comments,
   type,
 }) {
   return (
-    <li key={id} className="p-4 flex items-center w-full">
+    <li className="p-4 flex items-center w-full">
       <div className="text-md mr-4">{linkTypeIcon(url, type)}</div>
       <div className="min-w-0 flex-1">
         <a href={url} className="min-w-0 font-medium">

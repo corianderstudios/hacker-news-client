@@ -38,22 +38,25 @@ export default function Stories() {
         <>
           <PageTitle title={title} subtitle={desc} />
           <ul className="list-none">
-            {articles.map(({ by, url, title, score, time, descendants }) => (
-              <PostUnit
-                author={by}
-                url={url}
-                title={title}
-                id={crypto.randomUUID()}
-                score={score}
-                createdAt={time}
-                comments={descendants}
-                type="article"
-              />
-            ))}
+            {articles.map(
+              ({ by, url, id, title, score, time, descendants }) => (
+                <PostUnit
+                  key={id}
+                  author={by}
+                  url={url}
+                  title={title}
+                  id={id}
+                  score={score}
+                  createdAt={time}
+                  comments={descendants}
+                  type="article"
+                />
+              ),
+            )}
           </ul>
           <LoadMoreButton
             callback={fetchNextPage}
-            type="articles"
+            type={type}
             isFetchingNextPage={isFetchingNextPage}
             hasNextPage={hasNextPage}
           />
