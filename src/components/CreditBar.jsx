@@ -30,7 +30,7 @@ export default function CreditBar({ score, author, createdAt, comments }) {
   );
 }
 
-function convertTime(unixTimestamp, locale = "en") {
+export function convertTime(unixTimestamp, locale = "en") {
   const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
   const differenceInSeconds = Math.floor(unixTimestamp - Date.now() / 1000);
 
