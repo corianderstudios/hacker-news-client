@@ -1,4 +1,4 @@
-# Hacker News Client
+# [Hacker News Client](https://corianderstudios.github.io/hacker-news-client/)
 
 [![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/corianderstudios/hacker-news-client/tree/main)
 
