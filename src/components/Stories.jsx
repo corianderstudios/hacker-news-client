@@ -28,9 +28,9 @@ export default function Stories() {
     return <Navigate to="/new" replace />;
   }
 
-  const articles = data?.pages.flatMap((page) => page.items) ?? [];
+  if (isError) return <Error />;
 
-  if (isError) return <Error message={error.message} />;
+  const articles = data?.pages.flatMap((page) => page.items) ?? [];
 
   return (
     <section className="flex-1">
