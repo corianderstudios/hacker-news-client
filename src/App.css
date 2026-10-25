@@ -116,3 +116,9 @@ body {
     background: rgba(0, 0, 0, 0.4);
   }
 }
+
+.contact {
+  display: block;
+  background-color: #ff6600;
+  color: #fff;
+}
